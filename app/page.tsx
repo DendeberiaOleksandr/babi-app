@@ -14,9 +14,6 @@ export default function Home() {
       .required('Password is required'),
   });
 
-  const [username, setUsername] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-
   const handleLogin = (values: any) => {
     console.log(values)
   };
@@ -31,16 +28,15 @@ export default function Home() {
         title="Login"
         inputs={[
           {
+            id: 'username',
             name: 'username',
             placeholder: 'Username',
-            value: username,
-            setValue: setUsername
+            type: 'text'
           },
           {
+            id: 'password',
             name: 'password',
             placeholder: 'Password',
-            value: password,
-            setValue: setPassword,
             type: 'password'
           },
         ]}
@@ -52,16 +48,10 @@ export default function Home() {
           text: 'Create an account',
           url: '/register'
         }}
-        formInitialValues={[
-          {
-            field: 'username',
-            value: ''
-          },
-          {
-            field: 'password',
-            value: ''
-          },
-        ]}
+        formInitialValues={{
+          username: '',
+          password: ''
+        }}
 
       />
       </BackgroundBlurredOverlay>

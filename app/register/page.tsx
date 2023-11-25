@@ -12,10 +12,6 @@ function RegistrationPage() {
     confirmPassword: Yup.string().required("Password confirmation is required"),
   });
 
-  const [username, setUsername] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [confirmPassword, setConfirmPassword] = useState<string>("");
-
   const handleRegister = (e: any) => {
     console.log(e);
   };
@@ -26,39 +22,28 @@ function RegistrationPage() {
         <Form
           validationSchema={RegisterSchema}
           title="Register"
-          formInitialValues={[
-            {
-                field: 'username',
-                value: ''
-            },
-            {
-                field: 'password',
-                value: ''
-            },
-            {
-                field: 'confirmPassword',
-                value: ''
-            },
-          ]}
+          formInitialValues={{
+            username: '',
+            password: '',
+            confirmPassword: ''
+          }}
           inputs={[
             {
+              id: "username",
               name: "username",
               placeholder: "Username",
-              value: username,
-              setValue: setUsername,
+              type: 'text'
             },
             {
+              id: "password",
               name: "password",
               placeholder: "Password",
-              value: password,
-              setValue: setPassword,
               type: "password",
             },
             {
+              id: "confirmPassword",
               name: "confirmPassword",
               placeholder: "Confirm Password",
-              value: confirmPassword,
-              setValue: setConfirmPassword,
               type: "password",
             },
           ]}
